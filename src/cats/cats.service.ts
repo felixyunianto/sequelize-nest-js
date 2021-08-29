@@ -14,5 +14,11 @@ export class CatsService {
         return this.catsRepository.findAll<Cat>();
     }
 
+    async create(createCatDto : CreateCatDto){
+        const cat = this.catsRepository.create(createCatDto)
+
+        return cat;
+    }
+
     
 }

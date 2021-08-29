@@ -11,4 +11,9 @@ export class CatsController{
     async findAll() : Promise<Cat[]>{
         return await this.catsService.findAll()
     }
+
+    @Post()
+    async create(@Body() createCatDto : CreateCatDto){
+        return this.catsService.create(createCatDto)
+    }
 }
