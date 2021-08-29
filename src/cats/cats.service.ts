@@ -20,17 +20,27 @@ export class CatsService {
   }
 
   async update(id: number, createCatDto: CreateCatDto) {
-    const cat = this.catsRepository.update(createCatDto, {
+    this.catsRepository.update(createCatDto, {
       where: {
         id,
       },
     });
 
     const results = {
-        id,
-        ...createCatDto
-    }
+      id,
+      ...createCatDto,
+    };
 
     return results;
+  }
+
+  async delete(id: number) {
+    this.catsRepository.destroy({
+      where: {
+        id,
+      },
+    });
+
+    return 'Delete data is successful';
   }
 }
